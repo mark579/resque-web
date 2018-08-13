@@ -4,12 +4,12 @@ module ResqueWeb
     PER_PAGE = 20
 
     def tabs
-      t = {'overview' => ResqueWeb::Engine.app.url_helpers.overview_path,
-       'working'  => ResqueWeb::Engine.app.url_helpers.working_index_path,
-       'failures' => ResqueWeb::Engine.app.url_helpers.failures_path,
-       'queues' => ResqueWeb::Engine.app.url_helpers.queues_path,
-       'workers' => ResqueWeb::Engine.app.url_helpers.workers_path,
-       'stats' => ResqueWeb::Engine.app.url_helpers.stats_path
+      t = {'overview' => main_app.overview_path,
+       'working'  => main_app.working_index_path,
+       'failures' => main_app.failures_path,
+       'queues' => main_app.queues_path,
+       'workers' => main_app.workers_path,
+       'stats' => main_app.stats_path
       }
       ResqueWeb::Plugins.plugins.each do |p|
         p.tabs.each { |tab| t.merge!(tab) }
